@@ -1,7 +1,7 @@
 package com.orange.chatbar.entity;
 
-public class OrangeEmoj {
-    public OrangeEmoj(){
+public class OrangeEmoji {
+    public OrangeEmoji(){
     }
     
     /**
@@ -9,7 +9,7 @@ public class OrangeEmoj {
      * @param icon 静态图片resource id
      * @param emojiText 表情emoji文本内容
      */
-    public OrangeEmoj(int icon, String emojiText){
+    public OrangeEmoji(int icon, String emojiText){
         this.icon = icon;
         this.emojiText = emojiText;
         this.type = Type.NORMAL;
@@ -21,7 +21,7 @@ public class OrangeEmoj {
      * @param emojiText emojiText 表情emoji文本内容
      * @param type 表情类型
      */
-    public OrangeEmoj(int icon, String emojiText, Type type){
+    public OrangeEmoji(int icon, String emojiText, Type type){
         this.icon = icon;
         this.emojiText = emojiText;
         this.type = type;

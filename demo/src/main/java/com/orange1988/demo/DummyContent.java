@@ -1,4 +1,4 @@
-package com.orange.chatbar.dummy;
+package com.orange1988.demo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

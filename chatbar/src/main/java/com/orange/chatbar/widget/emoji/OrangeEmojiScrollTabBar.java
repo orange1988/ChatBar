@@ -1,4 +1,4 @@
-package com.orange.chatbar.widget.emoj;
+package com.orange.chatbar.widget.emoji;
 
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
@@ -16,7 +16,7 @@ import com.orange.chatbar.utils.DensityUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrangeEmojiconScrollTabBar extends RelativeLayout{
+public class OrangeEmojiScrollTabBar extends RelativeLayout{
 
     private Context context;
     private HorizontalScrollView scrollView;
@@ -27,15 +27,15 @@ public class OrangeEmojiconScrollTabBar extends RelativeLayout{
     
     private int tabWidth = 60;
 
-    public OrangeEmojiconScrollTabBar(Context context) {
+    public OrangeEmojiScrollTabBar(Context context) {
         this(context, null);
     }
 
-    public OrangeEmojiconScrollTabBar(Context context, AttributeSet attrs, int defStyle) {
+    public OrangeEmojiScrollTabBar(Context context, AttributeSet attrs, int defStyle) {
         this(context, attrs);
     }
 
-    public OrangeEmojiconScrollTabBar(Context context, AttributeSet attrs) {
+    public OrangeEmojiScrollTabBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }

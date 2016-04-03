@@ -1,4 +1,4 @@
-package com.orange.chatbar.widget.emoj;
+package com.orange.chatbar.widget.emoji;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -12,18 +12,18 @@ import android.widget.GridView;
 import com.orange.chatbar.R;
 import com.orange.chatbar.adapter.OrangeEmojGridAdapter;
 import com.orange.chatbar.adapter.OrangeiconPagerAdapter;
-import com.orange.chatbar.entity.OrangeEmoj;
-import com.orange.chatbar.entity.OrangeEmojGroupEntity;
+import com.orange.chatbar.entity.OrangeEmoji;
+import com.orange.chatbar.entity.OrangeEmojiGroupEntity;
 import com.orange.chatbar.utils.SmileUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrangeEmojiconPagerView extends ViewPager{
+public class OrangeEmojiPagerView extends ViewPager{
 
     private Context context;
-    private List<OrangeEmojGroupEntity> groupEntities;
-    private List<OrangeEmoj> totalEmojiconList = new ArrayList<OrangeEmoj>();
+    private List<OrangeEmojiGroupEntity> groupEntities;
+    private List<OrangeEmoji> totalEmojiconList = new ArrayList<OrangeEmoji>();
     
     private PagerAdapter pagerAdapter;
     
@@ -40,17 +40,17 @@ public class OrangeEmojiconPagerView extends ViewPager{
 	private EaseEmojiconPagerViewListener pagerViewListener;
     private List<View> viewpages; 
 
-    public OrangeEmojiconPagerView(Context context, AttributeSet attrs) {
+    public OrangeEmojiPagerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
     }
 
-    public OrangeEmojiconPagerView(Context context) {
+    public OrangeEmojiPagerView(Context context) {
         this(context, null);
     }
     
     
-    public void init(List<OrangeEmojGroupEntity> emojiconGroupList, int emijiconColumns, int bigEmojiconColumns){
+    public void init(List<OrangeEmojiGroupEntity> emojiconGroupList, int emijiconColumns, int bigEmojiconColumns){
         if(emojiconGroupList == null){
             throw new RuntimeException("emojiconGroupList is null");
         }
@@ -61,8 +61,8 @@ public class OrangeEmojiconPagerView extends ViewPager{
         
         viewpages = new ArrayList<View>();
         for(int i = 0; i < groupEntities.size(); i++){
-            OrangeEmojGroupEntity group = groupEntities.get(i);
-            List<OrangeEmoj> groupEmojicons = group.getEmojiconList();
+            OrangeEmojiGroupEntity group = groupEntities.get(i);
+            List<OrangeEmoji> groupEmojicons = group.getEmojiconList();
             totalEmojiconList.addAll(groupEmojicons);
             List<View> gridViews = getGroupGridViews(group);
             if(i == 0){
@@ -105,12 +105,12 @@ public class OrangeEmojiconPagerView extends ViewPager{
      * @param groupEntity
      * @return
      */
-    public List<View> getGroupGridViews(OrangeEmojGroupEntity groupEntity){
-        List<OrangeEmoj> emojiconList = groupEntity.getEmojiconList();
+    public List<View> getGroupGridViews(OrangeEmojiGroupEntity groupEntity){
+        List<OrangeEmoji> emojiconList = groupEntity.getEmojiconList();
         int itemSize = emojiconColumns * emojiconRows -1;
         int totalSize = emojiconList.size();
-        OrangeEmoj.Type emojiType = groupEntity.getType();
-        if(emojiType == OrangeEmoj.Type.BIG_EXPRESSION){
+        OrangeEmoji.Type emojiType = groupEntity.getType();
+        if(emojiType == OrangeEmoji.Type.BIG_EXPRESSION){
             itemSize = bigEmojiconColumns * bigEmojiconRows;
         }
         int pageSize = totalSize % itemSize == 0 ? totalSize/itemSize : totalSize/itemSize + 1;   
@@ -118,19 +118,19 @@ public class OrangeEmojiconPagerView extends ViewPager{
         for(int i = 0; i < pageSize; i++){
             View view = View.inflate(context, R.layout.ease_expression_gridview, null);
             GridView gv = (GridView) view.findViewById(R.id.gridview);
-            if(emojiType == OrangeEmoj.Type.BIG_EXPRESSION){
+            if(emojiType == OrangeEmoji.Type.BIG_EXPRESSION){
                 gv.setNumColumns(bigEmojiconColumns);
             }else{
                 gv.setNumColumns(emojiconColumns);
             }
-            List<OrangeEmoj> list = new ArrayList<OrangeEmoj>();
+            List<OrangeEmoji> list = new ArrayList<OrangeEmoji>();
             if(i != pageSize -1){
                 list.addAll(emojiconList.subList(i * itemSize, (i+1) * itemSize));
             }else{
                 list.addAll(emojiconList.subList(i * itemSize, totalSize));
             }
-            if(emojiType != OrangeEmoj.Type.BIG_EXPRESSION){
-                OrangeEmoj deleteIcon = new OrangeEmoj();
+            if(emojiType != OrangeEmoji.Type.BIG_EXPRESSION){
+                OrangeEmoji deleteIcon = new OrangeEmoji();
                 deleteIcon.setEmojiText(SmileUtils.DELETE_KEY);
                 list.add(deleteIcon);
             }
@@ -140,7 +140,7 @@ public class OrangeEmojiconPagerView extends ViewPager{
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    OrangeEmoj emojicon = gridAdapter.getItem(position);
+                    OrangeEmoji emojicon = gridAdapter.getItem(position);
                     if(pagerViewListener != null){
                         String emojiText = emojicon.getEmojiText();
                         if(emojiText != null && emojiText.equals(SmileUtils.DELETE_KEY)){
@@ -164,7 +164,7 @@ public class OrangeEmojiconPagerView extends ViewPager{
      * 添加表情组
      * @param groupEntity
      */
-    public void addEmojiconGroup(OrangeEmojGroupEntity groupEntity, boolean notifyDataChange) {
+    public void addEmojiconGroup(OrangeEmojiGroupEntity groupEntity, boolean notifyDataChange) {
         int pageSize = getPageSize(groupEntity);
         if(pageSize > maxPageCount){
             maxPageCount = pageSize;
@@ -195,12 +195,12 @@ public class OrangeEmojiconPagerView extends ViewPager{
      * 获取pager数量
      * @return
      */
-    private int getPageSize(OrangeEmojGroupEntity groupEntity) {
-        List<OrangeEmoj> emojiconList = groupEntity.getEmojiconList();
+    private int getPageSize(OrangeEmojiGroupEntity groupEntity) {
+        List<OrangeEmoji> emojiconList = groupEntity.getEmojiconList();
         int itemSize = emojiconColumns * emojiconRows -1;
         int totalSize = emojiconList.size();
-        OrangeEmoj.Type emojiType = groupEntity.getType();
-        if(emojiType == OrangeEmoj.Type.BIG_EXPRESSION){
+        OrangeEmoji.Type emojiType = groupEntity.getType();
+        if(emojiType == OrangeEmoji.Type.BIG_EXPRESSION){
             itemSize = bigEmojiconColumns * bigEmojiconRows;
         }
         int pageSize = totalSize % itemSize == 0 ? totalSize/itemSize : totalSize/itemSize + 1;   
@@ -212,7 +212,7 @@ public class OrangeEmojiconPagerView extends ViewPager{
         public void onPageSelected(int position) {
         	int endSize = 0;
         	int groupPosition = 0;
-            for(OrangeEmojGroupEntity groupEntity : groupEntities){
+            for(OrangeEmojiGroupEntity groupEntity : groupEntities){
             	int groupPageSize = getPageSize(groupEntity);
             	//选中的position在当前遍历的group里
             	if(endSize + groupPageSize > position){
@@ -291,7 +291,7 @@ public class OrangeEmojiconPagerView extends ViewPager{
     	void onGroupMaxPageSizeChanged(int maxCount);
     	
     	void onDeleteImageClicked();
-    	void onExpressionClicked(OrangeEmoj emojicon);
+    	void onExpressionClicked(OrangeEmoji emojicon);
     	
     }
 

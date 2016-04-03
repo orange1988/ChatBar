@@ -6,11 +6,11 @@ import java.util.List;
 /**
  * 一组表情所对应的实体类
  */
-public class OrangeEmojGroupEntity {
+public class OrangeEmojiGroupEntity {
     /**
      * 表情数据
      */
-    private List<OrangeEmoj> emojiconList;
+    private List<OrangeEmoji> emojiconList;
     /**
      * 图片
      */
@@ -22,28 +22,28 @@ public class OrangeEmojGroupEntity {
     /**
      * 表情类型
      */
-    private OrangeEmoj.Type type;
+    private OrangeEmoji.Type type;
 
-    public OrangeEmojGroupEntity() {
+    public OrangeEmojiGroupEntity() {
     }
 
-    public OrangeEmojGroupEntity(int icon, List<OrangeEmoj> emojiconList) {
+    public OrangeEmojiGroupEntity(int icon, List<OrangeEmoji> emojiconList) {
         this.icon = icon;
         this.emojiconList = emojiconList;
-        type = OrangeEmoj.Type.NORMAL;
+        type = OrangeEmoji.Type.NORMAL;
     }
 
-    public OrangeEmojGroupEntity(int icon, List<OrangeEmoj> emojiconList, OrangeEmoj.Type type) {
+    public OrangeEmojiGroupEntity(int icon, List<OrangeEmoji> emojiconList, OrangeEmoji.Type type) {
         this.icon = icon;
         this.emojiconList = emojiconList;
         this.type = type;
     }
 
-    public List<OrangeEmoj> getEmojiconList() {
+    public List<OrangeEmoji> getEmojiconList() {
         return emojiconList;
     }
 
-    public void setEmojiconList(List<OrangeEmoj> emojiconList) {
+    public void setEmojiconList(List<OrangeEmoji> emojiconList) {
         this.emojiconList = emojiconList;
     }
 
@@ -63,11 +63,11 @@ public class OrangeEmojGroupEntity {
         this.name = name;
     }
 
-    public OrangeEmoj.Type getType() {
+    public OrangeEmoji.Type getType() {
         return type;
     }
 
-    public void setType(OrangeEmoj.Type type) {
+    public void setType(OrangeEmoji.Type type) {
         this.type = type;
     }
 

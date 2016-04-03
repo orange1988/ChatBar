@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="OrangeEmojiconMenu">
+    <declare-styleable name="OrangeEmojiMenu">
         <attr name="bigEmojiconRows" format="integer" />
         <attr name="emojiconColumns" format="integer" />
     </declare-styleable>

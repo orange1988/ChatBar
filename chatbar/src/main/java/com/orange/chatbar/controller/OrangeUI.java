@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.orange.chatbar.entity.OrangeEmoj;
+import com.orange.chatbar.entity.OrangeEmoji;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -153,7 +153,7 @@ public final class OrangeUI {
 		 * @param emojiconIdentityCode
 		 * @return
 		 */
-		OrangeEmoj getEmojiconInfo(String emojiconIdentityCode);
+		OrangeEmoji getEmojiconInfo(String emojiconIdentityCode);
 
 		/**
 		 * 获取文字表情的映射Map,map的key为表情的emoji文本内容，value为对应的图片资源id或者本地路径(不能为网络地址)

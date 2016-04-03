@@ -1,25 +1,25 @@
-package com.orange.chatbar.widget.emoj;
+package com.orange.chatbar.widget.emoji;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.orange.chatbar.entity.OrangeEmoj;
+import com.orange.chatbar.entity.OrangeEmoji;
 
 
-public class OrangeEmojiconMenuBase extends LinearLayout{
+public class OrangeEmojiMenuBase extends LinearLayout{
     protected EaseEmojiconMenuListener listener;
     
-    public OrangeEmojiconMenuBase(Context context) {
+    public OrangeEmojiMenuBase(Context context) {
         super(context);
     }
     
     @SuppressLint("NewApi")
-    public OrangeEmojiconMenuBase(Context context, AttributeSet attrs, int defStyle) {
+    public OrangeEmojiMenuBase(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-    public OrangeEmojiconMenuBase(Context context, AttributeSet attrs) {
+    public OrangeEmojiMenuBase(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -37,7 +37,7 @@ public class OrangeEmojiconMenuBase extends LinearLayout{
          * 表情被点击
          * @param emojicon
          */
-        void onExpressionClicked(OrangeEmoj emojicon);
+        void onExpressionClicked(OrangeEmoji emojicon);
         /**
          * 删除按钮被点击
          */

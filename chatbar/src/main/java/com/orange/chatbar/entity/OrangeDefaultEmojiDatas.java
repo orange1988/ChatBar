@@ -4,7 +4,7 @@ package com.orange.chatbar.entity;
 import com.orange.chatbar.R;
 import com.orange.chatbar.utils.SmileUtils;
 
-public class OrangeDefaultEmojDatas {
+public class OrangeDefaultEmojiDatas {
     
     private static String[] emojis = new String[]{
         SmileUtils.ee_1,
@@ -84,17 +84,17 @@ public class OrangeDefaultEmojDatas {
     };
     
     
-    private static final OrangeEmoj[] DATA = createData();
+    private static final OrangeEmoji[] DATA = createData();
     
-    private static OrangeEmoj[] createData(){
-        OrangeEmoj[] datas = new OrangeEmoj[icons.length];
+    private static OrangeEmoji[] createData(){
+        OrangeEmoji[] datas = new OrangeEmoji[icons.length];
         for(int i = 0; i < icons.length; i++){
-            datas[i] = new OrangeEmoj(icons[i], emojis[i], OrangeEmoj.Type.NORMAL);
+            datas[i] = new OrangeEmoji(icons[i], emojis[i], OrangeEmoji.Type.NORMAL);
         }
         return datas;
     }
     
-    public static OrangeEmoj[] getData(){
+    public static OrangeEmoji[] getData(){
         return DATA;
     }
 }

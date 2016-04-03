@@ -1,4 +1,4 @@
-package com.orange.chatbar.widget.emoj;
+package com.orange.chatbar.widget.emoji;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressLint("NewApi")
-public class OrangeEmojiconIndicatorView extends LinearLayout{
+public class OrangeEmojiIndicatorView extends LinearLayout{
 
     private Context context;
     private Bitmap selectedBitmap;
@@ -29,16 +29,16 @@ public class OrangeEmojiconIndicatorView extends LinearLayout{
     
     private int dotHeight = 12;
 
-    public OrangeEmojiconIndicatorView(Context context, AttributeSet attrs, int defStyle) {
+    public OrangeEmojiIndicatorView(Context context, AttributeSet attrs, int defStyle) {
         this(context, null);
     }
 
-    public OrangeEmojiconIndicatorView(Context context, AttributeSet attrs) {
+    public OrangeEmojiIndicatorView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public OrangeEmojiconIndicatorView(Context context) {
+    public OrangeEmojiIndicatorView(Context context) {
         this(context,null);
     }
     

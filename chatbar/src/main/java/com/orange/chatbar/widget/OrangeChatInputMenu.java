@@ -10,12 +10,12 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.orange.chatbar.R;
-import com.orange.chatbar.entity.OrangeDefaultEmojDatas;
-import com.orange.chatbar.entity.OrangeEmoj;
-import com.orange.chatbar.entity.OrangeEmojGroupEntity;
+import com.orange.chatbar.entity.OrangeDefaultEmojiDatas;
+import com.orange.chatbar.entity.OrangeEmoji;
+import com.orange.chatbar.entity.OrangeEmojiGroupEntity;
 import com.orange.chatbar.utils.SmileUtils;
-import com.orange.chatbar.widget.emoj.OrangeEmojiconMenu;
-import com.orange.chatbar.widget.emoj.OrangeEmojiconMenuBase;
+import com.orange.chatbar.widget.emoji.OrangeEmojiMenu;
+import com.orange.chatbar.widget.emoji.OrangeEmojiMenuBase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ import java.util.List;
 public class OrangeChatInputMenu extends LinearLayout {
     FrameLayout primaryMenuContainer, emojiconMenuContainer;
     protected OrangeChatPrimaryMenuBase chatPrimaryMenu;
-    protected OrangeEmojiconMenuBase emojiconMenu;
+    protected OrangeEmojiMenuBase emojiconMenu;
     protected OrangeChatExtendMenu chatExtendMenu;
     protected FrameLayout chatExtendMenuContainer;
     protected LayoutInflater layoutInflater;
@@ -73,7 +73,7 @@ public class OrangeChatInputMenu extends LinearLayout {
      * setCustomPrimaryMenu(如果需要自定义这两个menu)后面
      * @param emojiconGroupList 表情组类别，传null使用easeui默认的表情
      */
-    public void init(List<OrangeEmojGroupEntity> emojiconGroupList) {
+    public void init(List<OrangeEmojiGroupEntity> emojiconGroupList) {
         if(inited){
             return;
         }
@@ -85,12 +85,12 @@ public class OrangeChatInputMenu extends LinearLayout {
 
         // 表情栏，没有自定义的用默认的
         if(emojiconMenu == null){
-            emojiconMenu = (OrangeEmojiconMenu) layoutInflater.inflate(R.layout.ease_layout_emojicon_menu, null);
+            emojiconMenu = (OrangeEmojiMenu) layoutInflater.inflate(R.layout.ease_layout_emojicon_menu, null);
             if(emojiconGroupList == null){
-                emojiconGroupList = new ArrayList<OrangeEmojGroupEntity>();
-                emojiconGroupList.add(new OrangeEmojGroupEntity(R.drawable.ee_1,  Arrays.asList(OrangeDefaultEmojDatas.getData())));
+                emojiconGroupList = new ArrayList<OrangeEmojiGroupEntity>();
+                emojiconGroupList.add(new OrangeEmojiGroupEntity(R.drawable.ee_1,  Arrays.asList(OrangeDefaultEmojiDatas.getData())));
             }
-            ((OrangeEmojiconMenu)emojiconMenu).init(emojiconGroupList);
+            ((OrangeEmojiMenu)emojiconMenu).init(emojiconGroupList);
         }
         emojiconMenuContainer.addView(emojiconMenu);
 
@@ -110,7 +110,7 @@ public class OrangeChatInputMenu extends LinearLayout {
      * 以及回调你想要回调出去的事件给设置的EaseEmojiconMenuListener
      * @param customEmojiconMenu
      */
-    public void setCustomEmojiconMenu(OrangeEmojiconMenuBase customEmojiconMenu){
+    public void setCustomEmojiconMenu(OrangeEmojiMenuBase customEmojiconMenu){
         this.emojiconMenu = customEmojiconMenu;
     }
     
@@ -131,7 +131,7 @@ public class OrangeChatInputMenu extends LinearLayout {
         return chatExtendMenu;
     }
     
-    public OrangeEmojiconMenuBase getEmojiconMenu(){
+    public OrangeEmojiMenuBase getEmojiconMenu(){
         return emojiconMenu;
     }
     
@@ -212,11 +212,11 @@ public class OrangeChatInputMenu extends LinearLayout {
         });
 
         // emojicon menu
-        emojiconMenu.setEmojiconMenuListener(new OrangeEmojiconMenuBase.EaseEmojiconMenuListener() {
+        emojiconMenu.setEmojiconMenuListener(new OrangeEmojiMenuBase.EaseEmojiconMenuListener() {
 
             @Override
-            public void onExpressionClicked(OrangeEmoj emojicon) {
-                if(emojicon.getType() != OrangeEmoj.Type.BIG_EXPRESSION){
+            public void onExpressionClicked(OrangeEmoji emojicon) {
+                if(emojicon.getType() != OrangeEmoji.Type.BIG_EXPRESSION){
                     if(emojicon.getEmojiText() != null){
                         chatPrimaryMenu.onEmojiconInputEvent(SmileUtils.getSmiledText(context,emojicon.getEmojiText()));
                     }
@@ -337,7 +337,7 @@ public class OrangeChatInputMenu extends LinearLayout {
          * 大表情被点击
          * @param emojicon
          */
-        void onBigExpressionClicked(OrangeEmoj emojicon);
+        void onBigExpressionClicked(OrangeEmoji emojicon);
 
         /**
          * 长按说话按钮touch事件

@@ -1,4 +1,4 @@
-package com.orange.chatbar;
+package com.orange1988.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.orange.chatbar.dummy.DummyContent;
 
 import java.util.List;
 

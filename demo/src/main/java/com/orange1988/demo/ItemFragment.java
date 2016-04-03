@@ -1,4 +1,4 @@
-package com.orange.chatbar;
+package com.orange1988.demo;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
-import com.orange.chatbar.dummy.DummyContent.DummyItem;
-import com.orange.chatbar.entity.OrangeEmoj;
+import com.orange1988.demo.DummyContent.DummyItem;
+import com.orange.chatbar.entity.OrangeEmoji;
 import com.orange.chatbar.widget.OrangeChatExtendMenu;
 import com.orange.chatbar.widget.OrangeChatInputMenu;
 import com.orange.chatbar.widget.OrangeVoiceRecorderView;
@@ -151,7 +151,7 @@ public class ItemFragment extends Fragment {
             }
 
             @Override
-            public void onBigExpressionClicked(OrangeEmoj emojicon) {
+            public void onBigExpressionClicked(OrangeEmoji emojicon) {
                 //发送大表情(动态表情)
             }
         });

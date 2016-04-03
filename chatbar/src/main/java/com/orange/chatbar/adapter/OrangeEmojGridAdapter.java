@@ -9,17 +9,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.orange.chatbar.R;
-import com.orange.chatbar.entity.OrangeEmoj;
+import com.orange.chatbar.entity.OrangeEmoji;
 import com.orange.chatbar.utils.SmileUtils;
 
 import java.util.List;
 
-public class OrangeEmojGridAdapter extends ArrayAdapter<OrangeEmoj>{
+public class OrangeEmojGridAdapter extends ArrayAdapter<OrangeEmoji>{
 
-    private OrangeEmoj.Type emojiconType;
+    private OrangeEmoji.Type emojiconType;
 
 
-    public OrangeEmojGridAdapter(Context context, int textViewResourceId, List<OrangeEmoj> objects, OrangeEmoj.Type emojiconType) {
+    public OrangeEmojGridAdapter(Context context, int textViewResourceId, List<OrangeEmoji> objects, OrangeEmoji.Type emojiconType) {
         super(context, textViewResourceId, objects);
         this.emojiconType = emojiconType;
     }
@@ -27,7 +27,7 @@ public class OrangeEmojGridAdapter extends ArrayAdapter<OrangeEmoj>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null){
-            if(emojiconType == OrangeEmoj.Type.BIG_EXPRESSION){
+            if(emojiconType == OrangeEmoji.Type.BIG_EXPRESSION){
                 convertView = View.inflate(getContext(), R.layout.ease_row_big_expression, null);
             }else{
                 convertView = View.inflate(getContext(), R.layout.ease_row_expression, null);
@@ -36,7 +36,7 @@ public class OrangeEmojGridAdapter extends ArrayAdapter<OrangeEmoj>{
         
         ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_expression);
         TextView textView = (TextView) convertView.findViewById(R.id.tv_name);
-        OrangeEmoj emojicon = getItem(position);
+        OrangeEmoji emojicon = getItem(position);
         if(textView != null && emojicon.getName() != null){
             textView.setText(emojicon.getName());
         }

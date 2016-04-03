@@ -20,8 +20,8 @@ import android.text.Spannable.Factory;
 import android.text.style.ImageSpan;
 
 import com.orange.chatbar.controller.OrangeUI;
-import com.orange.chatbar.entity.OrangeDefaultEmojDatas;
-import com.orange.chatbar.entity.OrangeEmoj;
+import com.orange.chatbar.entity.OrangeDefaultEmojiDatas;
+import com.orange.chatbar.entity.OrangeEmoji;
 
 import java.io.File;
 import java.util.HashMap;
@@ -76,7 +76,7 @@ public class SmileUtils {
 	
 
 	static {
-	    OrangeEmoj[] emojicons = OrangeDefaultEmojDatas.getData();
+	    OrangeEmoji[] emojicons = OrangeDefaultEmojiDatas.getData();
 	    for(int i = 0; i < emojicons.length; i++){
 	        addPattern(emojicons[i].getEmojiText(), emojicons[i].getIcon());
 	    }

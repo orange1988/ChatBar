@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.orange.chatbar.widget.emoj.OrangeEmojiconPagerView
+    <com.orange.chatbar.widget.emoji.OrangeEmojiPagerView
         android:id="@+id/pager_view"
         android:layout_width="match_parent"
         android:layout_height="142dp" />
 
-    <com.orange.chatbar.widget.emoj.OrangeEmojiconIndicatorView
+    <com.orange.chatbar.widget.emoji.OrangeEmojiIndicatorView
         android:id="@+id/indicator_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_height="0.5dp"
         android:background="#CFCFCF" />
 
-    <com.orange.chatbar.widget.emoj.OrangeEmojiconScrollTabBar
+    <com.orange.chatbar.widget.emoji.OrangeEmojiScrollTabBar
         android:id="@+id/tab_bar"
         android:layout_width="match_parent"
         android:layout_height="35dp" />

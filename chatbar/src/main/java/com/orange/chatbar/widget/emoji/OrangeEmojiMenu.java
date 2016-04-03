@@ -1,4 +1,4 @@
-package com.orange.chatbar.widget.emoj;
+package com.orange.chatbar.widget.emoji;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.orange.chatbar.R;
-import com.orange.chatbar.entity.OrangeEmoj;
-import com.orange.chatbar.entity.OrangeEmojGroupEntity;
+import com.orange.chatbar.entity.OrangeEmoji;
+import com.orange.chatbar.entity.OrangeEmojiGroupEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,53 +19,53 @@ import java.util.List;
 /**
  * 表情图片控件
  */
-public class OrangeEmojiconMenu extends OrangeEmojiconMenuBase {
+public class OrangeEmojiMenu extends OrangeEmojiMenuBase {
 	
 	private int emojiconColumns;
 	private int bigEmojiconColumns;
 	private final int defaultBigColumns = 4;
 	private final int defaultColumns = 7;
-    private OrangeEmojiconScrollTabBar tabBar;
-    private OrangeEmojiconIndicatorView indicatorView;
-    private OrangeEmojiconPagerView pagerView;
+    private OrangeEmojiScrollTabBar tabBar;
+    private OrangeEmojiIndicatorView indicatorView;
+    private OrangeEmojiPagerView pagerView;
     
-    private List<OrangeEmojGroupEntity> emojiconGroupList = new ArrayList<OrangeEmojGroupEntity>();
+    private List<OrangeEmojiGroupEntity> emojiconGroupList = new ArrayList<OrangeEmojiGroupEntity>();
 	
 	
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public OrangeEmojiconMenu(Context context, AttributeSet attrs, int defStyle) {
+	public OrangeEmojiMenu(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		init(context, attrs);
 	}
 
-	public OrangeEmojiconMenu(Context context, AttributeSet attrs) {
+	public OrangeEmojiMenu(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context, attrs);
 	}
 
-	public OrangeEmojiconMenu(Context context) {
+	public OrangeEmojiMenu(Context context) {
 		super(context);
 		init(context, null);
 	}
 	
 	private void init(Context context, AttributeSet attrs){
 		LayoutInflater.from(context).inflate(R.layout.ease_widget_emojicon, this);
-		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.OrangeEmojiconMenu);
-		emojiconColumns = ta.getInt(R.styleable.OrangeEmojiconMenu_emojiconColumns, defaultColumns);
-		bigEmojiconColumns = ta.getInt(R.styleable.OrangeEmojiconMenu_bigEmojiconRows, defaultBigColumns);
+		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.OrangeEmojiMenu);
+		emojiconColumns = ta.getInt(R.styleable.OrangeEmojiMenu_emojiconColumns, defaultColumns);
+		bigEmojiconColumns = ta.getInt(R.styleable.OrangeEmojiMenu_bigEmojiconRows, defaultBigColumns);
 		ta.recycle();
 		
-		pagerView = (OrangeEmojiconPagerView) findViewById(R.id.pager_view);
-		indicatorView = (OrangeEmojiconIndicatorView) findViewById(R.id.indicator_view);
-		tabBar = (OrangeEmojiconScrollTabBar) findViewById(R.id.tab_bar);
+		pagerView = (OrangeEmojiPagerView) findViewById(R.id.pager_view);
+		indicatorView = (OrangeEmojiIndicatorView) findViewById(R.id.indicator_view);
+		tabBar = (OrangeEmojiScrollTabBar) findViewById(R.id.tab_bar);
 		
 	}
 	
-	public void init(List<OrangeEmojGroupEntity> groupEntities){
+	public void init(List<OrangeEmojiGroupEntity> groupEntities){
 	    if(groupEntities == null || groupEntities.size() == 0){
 	        return;
 	    }
-	    for(OrangeEmojGroupEntity groupEntity : groupEntities){
+	    for(OrangeEmojiGroupEntity groupEntity : groupEntities){
 	        emojiconGroupList.add(groupEntity);
 	        tabBar.addTab(groupEntity.getIcon());
 	    }
@@ -73,7 +73,7 @@ public class OrangeEmojiconMenu extends OrangeEmojiconMenuBase {
 	    pagerView.setPagerViewListener(new EmojiconPagerViewListener());
         pagerView.init(emojiconGroupList, emojiconColumns,bigEmojiconColumns);
         
-        tabBar.setTabBarItemClickListener(new OrangeEmojiconScrollTabBar.EaseScrollTabBarItemClickListener() {
+        tabBar.setTabBarItemClickListener(new OrangeEmojiScrollTabBar.EaseScrollTabBarItemClickListener() {
             
             @Override
             public void onItemClick(int position) {
@@ -88,7 +88,7 @@ public class OrangeEmojiconMenu extends OrangeEmojiconMenuBase {
      * 添加表情组
      * @param groupEntity
      */
-    public void addEmojiconGroup(OrangeEmojGroupEntity groupEntity){
+    public void addEmojiconGroup(OrangeEmojiGroupEntity groupEntity){
         emojiconGroupList.add(groupEntity);
         pagerView.addEmojiconGroup(groupEntity, true);
         tabBar.addTab(groupEntity.getIcon());
@@ -98,9 +98,9 @@ public class OrangeEmojiconMenu extends OrangeEmojiconMenuBase {
      * 添加一系列表情组
      * @param groupEntitieList
      */
-    public void addEmojiconGroup(List<OrangeEmojGroupEntity> groupEntitieList){
+    public void addEmojiconGroup(List<OrangeEmojiGroupEntity> groupEntitieList){
         for(int i= 0; i < groupEntitieList.size(); i++){
-            OrangeEmojGroupEntity groupEntity = groupEntitieList.get(i);
+            OrangeEmojiGroupEntity groupEntity = groupEntitieList.get(i);
             emojiconGroupList.add(groupEntity);
             pagerView.addEmojiconGroup(groupEntity, i == groupEntitieList.size()-1 ? true : false);
             tabBar.addTab(groupEntity.getIcon());
@@ -127,7 +127,7 @@ public class OrangeEmojiconMenu extends OrangeEmojiconMenuBase {
     }
 	
 	
-	private class EmojiconPagerViewListener implements OrangeEmojiconPagerView.EaseEmojiconPagerViewListener {
+	private class EmojiconPagerViewListener implements OrangeEmojiPagerView.EaseEmojiconPagerViewListener {
 
         @Override
         public void onPagerViewInited(int groupMaxPageSize, int firstGroupPageSize) {
@@ -165,7 +165,7 @@ public class OrangeEmojiconMenu extends OrangeEmojiconMenuBase {
         }
 
         @Override
-        public void onExpressionClicked(OrangeEmoj emojicon) {
+        public void onExpressionClicked(OrangeEmoji emojicon) {
             if(listener != null){
                 listener.onExpressionClicked(emojicon);
             }
